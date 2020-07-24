@@ -1,0 +1,75 @@
+#include <SoftwareSerial.h>
+
+// pins
+int L1 = 5;
+int L2 = 7;
+int LEN = 9;
+int R1 = 6;
+int R2 = 8;
+int REN = 10;
+int steering = 11;
+
+byte ba[1000];
+char ca[1000];
+
+SoftwareSerial esp(2, 3);
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(R1, OUTPUT);
+  pinMode(R2, OUTPUT);
+  pinMode(L1, OUTPUT);
+  pinMode(L2, OUTPUT);
+  pinMode(LEN, OUTPUT); //pwm
+  pinMode(REN, OUTPUT); //pwm
+  pinMode(steering, OUTPUT);
+  Serial.begin(115200);
+  esp.begin(115200);
+  Serial.print("setup done");
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+  //  digitalWrite(rt_up, HIGH); // backward
+  //  digitalWrite(rt_down, LOW);
+  //  digitalWrite(lt_up, HIGH); //backward
+  ////  digitalWrite(lt_down, LOW);
+  //  delay(3000);
+  //    digitalWrite(rt_up, LOW); // forward
+  //  digitalWrite(rt_down, HIGH);
+  ////    digitalWrite(lt_up, LOW); // forward
+  //  digitalWrite(lt_down, HIGH);
+  //  delay(3000);
+
+  //  if (esp.available()){
+  //    String espIn = esp.readString();
+  //  }
+  //
+  //  if (espIn){
+  //    if(espIn ==
+  //  }
+  //
+
+  if (Serial.available()) {
+    Serial.print(Serial.readBytes(ba, 100));
+    for (int i; i < 100; i++) {
+      Serial.print(int(ba[i]));
+    }
+    Serial.println();
+
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
